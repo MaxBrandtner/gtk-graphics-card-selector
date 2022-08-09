@@ -23,10 +23,12 @@ class MainWindow(Gtk.Window):
         self.box.pack_start(self.button_dedicated, True, True, 0)
 
     def integrated_clicked(self, widget):
-        system("integrated-graphics")
+        system("supergfxctl -m Integrated")
+        system("gnome-session-quit --logout")
 
     def dedicated_clicked(self, widget):
-        system("dedicated-graphics")
+        system("supergfxctl -m Dedicated")
+        system("gnome-session-quit --logout")
 
 window = MainWindow()
 window.connect("destroy", Gtk.main_quit)
